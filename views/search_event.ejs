@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <title>Search Event</title>
+    <link rel="manifest" href="/manifest.json">
+    <!-- Bootstrap core -->
+    <link rel="stylesheet" href="/stylesheets/libraries/bootstrap.css">
+    <!-- customised style -->
+    <link rel="stylesheet" href="/stylesheets/modal.css">
+    <link rel="stylesheet" href="/stylesheets/navbar.css">
+    <link rel="stylesheet" type="text/css" href="/stylesheets/draftBtn.css">
+    <!-- jQuery -->
+    <script src="/javascripts/libraries/jquery-3.3.1.js"></script>
+    <!-- init indexed db -->
+    <script src="/javascripts/idb.js"></script>
+    <!-- popper -->
+    <script src="/javascripts/libraries/popper.js"></script>
+    <!-- bootstrap.js -->
+    <script src="/javascripts/libraries/bootstrap.js"></script>
+    <!-- font awesome -->
+    <link rel="stylesheet" href="/stylesheets/all.css">
+    <!-- moment -->
+    <script src="/javascripts/libraries/moment.js"></script>
+    <!-- date picker -->
+    <script src="/javascripts/libraries/pikaday.js"></script>
+    <link rel="stylesheet" type="text/css" href="/stylesheets/libraries/pikaday.css">
+</head>
+
+<body>
+<div id="offline-div" style="display: none; text-align: center" class="alert alert-warning" role="alert">
+    <h1>YOU ARE OFFLINE</h1>
+</div>
+<nav class="navbar navbar-expand-sm navbar-light bg-light" style="background-color: #FFFFFF; ">
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown"
+            aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNavDropdown">
+        <ul class="navbar-nav" id="nav">
+            <li class="nav-item">
+                <a class="nav-link" href="/">Home</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link active" href="/events">Search Events</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/posts">Search Posts</a>
+            </li>
+            <li class="nav-item" id="myBlog">
+            </li>
+        </ul>
+    </div>
+    <form class="form-inline text-center">
+        <div class="input-group" id="nav-bar-btn">
+
+        </div>
+    </form>
+</nav>
+<div class="container">
+
+    <!-- Page Heading -->
+    <div class="alert alert-light" role="alert" style="text-align: center">
+        <h3>Search Events</h3>
+    </div>
+
+    <div id="search-form" class="row">
+    </div>
+    <div class="row">
+        <div class="col-sm-1"></div>
+        <div class="col-sm-10">
+            <div id="map-container" class="card mb-5 z-depth-1-half map-container mb-5 row"
+                 style="height: 400px; padding-bottom: 1%; margin-top: 1%">
+            </div>
+
+            <!-- events -->
+            <div class="alert alert-light" role="alert" style="text-align: center">
+                <h3 id="showText"></h3>
+            </div>
+            <div id="event-cards" class="row">
+            </div>
+            <div class="alert alert-light" role="alert" style="text-align: center">
+                <h3 id="postsCount" style="text-align: center"></h3>
+                <div class="alert alert-light" role="alert" style="text-align: center">
+
+                    <div id="blog-post">
+
+                    </div>
+
+                </div>
+                <div class="col-sm-1"></div>
+            </div>
+
+        </div>
+        <!-- /.container -->
+</body>
+<script src="/javascripts/init_sw.js"></script>
+<script src="/javascripts/query_user.js"></script>
+<script src="/javascripts/nav_bar_btn.js"></script>
+<script src="/javascripts/init_google_autocmp.js"></script>
+<script src="/javascripts/search_component.js"></script>
+<script src="/javascripts/database_indexed.js"></script>
+<script src="/javascripts/query_event.js"></script>
+<script src="/javascripts/search_event.js"></script>
+<script src="/javascripts/query_post.js"></script>
+<script src="/javascripts/google_map_controller.js"></script>
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDzvopGR4Y5pFczQMWdHoKcIzywJwr_VYA&libraries=places&callback=initMap
+" async defer></script>

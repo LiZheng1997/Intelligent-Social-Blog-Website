@@ -1,2 +1,2 @@
-# Intelligent-Social-Blog-Website
-This is a task for a moudle in the University of Sheffield.
+# COM6504_assignment
+Final assignment for COM6504.

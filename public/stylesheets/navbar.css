@@ -1,0 +1,35 @@
+.navbar-center {
+    display: inline-block;
+    float: none;
+    vertical-align: top;
+}
+
+.navbar-collapse-center {
+    text-align: center;
+}
+
+#nav .nav-item {
+    margin: 0 10px !important;
+}
+
+#post_event {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    width: 300px;
+
+}
+
+.index-event {
+    position: relative;
+}
+
+nav {
+    position: relative;
+}
+
+nav .form-inline {
+    position: absolute;
+    top: 8px;
+    right: 15px;
+}

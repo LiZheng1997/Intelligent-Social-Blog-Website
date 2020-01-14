@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="author" content="">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Register Page</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+          crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="/stylesheets/login.css">
+</head>
+
+<body class="my-login-page">
+<% if(valid) { %>
+    <div class="alert alert-warning alert-dismissible fade show" style="text-align: center" role="alert">
+        <strong><%= valid %></strong>
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+<% } %>
+<section class="h-100">
+    <div class="container h-100">
+        <div class="row justify-content-md-center h-100">
+            <div class="card-wrapper">
+                <div class="brand">
+                    <img src="/images/user.png" alt="Register page">
+                </div>
+                <div class="card fat">
+                    <div class="card-body">
+                        <h4 class="card-title">Register</h4>
+                        <form method="POST" class="my-login-validation" novalidate="">
+                            <div class="form-group">
+                                <label for="username">Username</label>
+                                <input id="username" type="text" class="form-control" name="username" required
+                                       autofocus>
+                                <div class="invalid-feedback">
+                                    Username is required
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="password">Password</label>
+                                <input id="password" type="password" class="form-control" name="password" required
+                                       data-eye>
+                                <div class="invalid-feedback">
+                                    Password is required
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="password">Confirm Password</label>
+                                <input id="confirmPassword" type="password" class="form-control" name="confirmPassword"
+                                       required data-eye>
+                                <div class="invalid-feedback">
+                                    Password is required
+                                </div>
+                            </div>
+                            <div class="form-group m-0">
+                                <button id="submitRegistration" type="submit" class="btn btn-primary btn-block">
+                                    Register
+                                </button>
+                            </div>
+                            <div class="mt-4 text-center">
+                                Already have an account? <a href="/login">Login</a>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<script src="/javascripts/libraries/jquery-3.3.1.js"></script>
+<script src="/javascripts/libraries/bootstrap.js"></script>
+<script src="/javascripts/user_entry.js"></script>
+<script src="/javascripts/register.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,16 @@
+body {
+    padding-top: 56px;
+}
+
+
+.pac-container {
+    z-index: 1051 !important;
+}
+
+.modal {
+    z-index: 20;
+}
+
+.modal-backdrop {
+    z-index: 10;
+}

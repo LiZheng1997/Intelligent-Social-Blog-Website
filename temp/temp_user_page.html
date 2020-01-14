@@ -1,0 +1,576 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="description" content="">
+    <meta name="author" content="Kodinger">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="/stylesheets/login.css">
+    <link rel="stylesheet" type="text/css" href="/stylesheets/jquery.datetimepicker.min.css">
+    <title>Blog Home - Start Bootstrap Template</title>
+    <!-- Bootstrap core -->
+    <script src="https://code.jquery.com/jquery-3.3.1.js"
+            integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60=" crossorigin="anonymous"></script>
+    <script src="https://cdn.bootcss.com/popper.js/1.12.9/umd/popper.min.js"
+            integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+            crossorigin="anonymous"></script>
+    <script src="https://cdn.bootcss.com/bootstrap/4.0.0/js/bootstrap.min.js"
+            integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+            crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+          crossorigin="anonymous">
+    <!-- font awesome-->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css"
+          integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.js"></script>
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.8.0/css/bootstrap-datepicker.min.css"/>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.8.0/js/bootstrap-datepicker.min.js"></script>
+    <!-- login validation -->
+    <script src="/javascripts/user_entry.js"></script>
+    <style type="text/css">
+        body {
+            padding-top: 56px;
+        }
+        .pac-container {
+            z-index: 1051 !important;
+        }
+
+        .modal {
+            z-index: 20;
+        }
+
+        .modal-backdrop {
+            z-index: 10;
+        }
+        ​
+    </style>
+</head>
+
+<body>
+<!-- Navigation -->
+<ul class="nav justify-content-center">
+    <li class="nav-item">
+        <a class="nav-link active" href="#">Home</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" href="#">Link</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" href="#">Link</a>
+    </li>
+    <form class="form-inline">
+        <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+        <div class="input-group">
+            <select class="custom-select" id="inputGroupSelect04" aria-label="Example select with button addon">
+                <option selected>Event</option>
+                <option value="1">Date</option>
+                <option value="2">Location</option>
+            </select>
+            <div class="input-group-append">
+                <button class="btn btn-outline-secondary" type="button"><i class="fas fa-search"></i></button>
+            </div>
+            <div style="margin-left: 15px">
+                <button type="button" class="btn btn-primary" data-target="#newPostModal" data-toggle="modal">
+                    New Post
+                </button>
+            </div>
+            <div style="margin-left: 15px">
+                <button type="button" class="btn btn-danger" data-target="#newEventModal" data-toggle="modal">
+                    Creat a new event
+                </button>
+            </div>
+        </div>
+    </form>
+</ul>
+<hr>
+<!-- Page Content -->
+<div class="container">
+    <div class="row">
+        <!-- Sidebar Widgets Column -->
+        <!-- Blog Entries Column -->
+        <div class="col-md-8">
+            <div class="card mb-3">
+                <img class="card-img-top" src="https://placehold.it/750x300" alt="Card image cap">
+            </div>
+            <hr>
+            <h1 class="my-4">Posts
+                <small>Secondary Text</small>
+            </h1>
+            <!-- Blog Post -->
+            <div class="card mb-4">
+                <img class="card-img-top" src="/images/ic.png" alt="Card image cap">
+                <div class="card-body">
+                    <h2 class="card-title">Post Title</h2>
+                    <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Reiciendis aliquid
+                        atque, nulla? Quos cum ex quis soluta, a laboriosam. Dicta expedita corporis animi vero
+                        voluptate voluptatibus possimus, veniam magni quis!</p>
+                    <a href="#" class="btn btn-primary">Read More &rarr;</a>
+                </div>
+                <div class="card-footer">
+                    <div class="row">
+                        <div class="col-md-7"><label> Posted on January 1, 2017 by author</label></div>
+                        <div class="col-md-3">
+                            <button type="button" class="btn btn-outline-dark" id="comment" data-toggle="collapse"
+                                    data-target="#collapseExample" aria-expanded="false"
+                                    aria-controls="collapseExample">Comment
+                            </button>
+                        </div>
+                        <div class="col-md-2">
+                            <button class="btn btn-outline-secondary" type="button"><i class="fa fa-thumbs-up"></i>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="collapsing" id="collapseExample">
+                        <div class="card card-body">
+                            <div class="row pre-scrollable">
+                                <div class="list-group">
+                                    <a href="#"
+                                       class="list-group-item list-group-item-action flex-column align-items-start">
+                                        <div class="d-flex w-100 justify-content-between">
+                                            <h5 class="mb-1">List group item heading</h5>
+                                            <small>3 days ago</small>
+                                        </div>
+                                        <p class="mb-1">Donec id elit non mi porta gravida at eget metus. Maecenas sed
+                                            diam eget risus varius blandit.</p>
+                                        <small>Donec id elit non mi porta.</small>
+                                    </a>
+                                    <a href="#"
+                                       class="list-group-item list-group-item-action flex-column align-items-start">
+                                        <div class="d-flex w-100 justify-content-between">
+                                            <h5 class="mb-1">List group item heading</h5>
+                                            <small>3 days ago</small>
+                                        </div>
+                                        <p class="mb-1">Donec id elit non mi porta gravida at eget metus. Maecenas sed
+                                            diam eget risus varius blandit.</p>
+                                        <small>Donec id elit non mi porta.</small>
+                                    </a>
+                                    <a href="#"
+                                       class="list-group-item list-group-item-action flex-column align-items-start">
+                                        <div class="d-flex w-100 justify-content-between">
+                                            <h5 class="mb-1">List group item heading</h5>
+                                            <small>3 days ago</small>
+                                        </div>
+                                        <p class="mb-1">Donec id elit non mi porta gravida at eget metus. Maecenas sed
+                                            diam eget risus varius blandit.</p>
+                                        <small>Donec id elit non mi porta.</small>
+                                    </a>
+                                    <a href="#"
+                                       class="list-group-item list-group-item-action flex-column align-items-start">
+                                        <div class="d-flex w-100 justify-content-between">
+                                            <h5 class="mb-1">List group item heading</h5>
+                                            <small>3 days ago</small>
+                                        </div>
+                                        <p class="mb-1">Donec id elit non mi porta gravida at eget metus. Maecenas sed
+                                            diam eget risus varius blandit.</p>
+                                        <small>Donec id elit non mi porta.</small>
+                                    </a>
+                                </div>
+                            </div>
+                            <br>
+                            <form>
+                                <div class="form-group">
+                                    <label for="message-text" class="col-form-label">Content:</label>
+                                    <textarea class="form-control" id="message-text2"
+                                              placeholder="Write your comment here"></textarea>
+                                </div>
+                                <div class="form-row">
+                                    <div class="input-group">
+                                        <input type="text" class="form-control"
+                                               aria-label="Amount (to the nearest dollar)" placeholder="location">
+                                        <div class="input-group-append">
+                                            <button class="btn btn-outline-secondary" type="button"><i
+                                                    class="fas fa-location-arrow"></i></button>
+                                        </div>
+                                    </div>
+                                </div>
+                                <hr>
+                                <div class="form-row">
+                                    <div class="col-10">
+                                    </div>
+                                    <div class="col">
+                                        <button type="button" class="btn btn-primary">Send</button>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Pagination -->
+            <ul class="pagination justify-content-center mb-4">
+                <li class="page-item">
+                    <a class="page-link" href="#">&larr; Older</a>
+                </li>
+                <li class="page-item disabled">
+                    <a class="page-link" href="#">Newer &rarr;</a>
+                </li>
+            </ul>
+        </div>
+        <div class="col-md-4">
+            <!-- Categories Widget -->
+            <div class="card" style="width: 18rem;">
+                <img class="card-img-top" src="/images/song.jpg" alt="Card image cap">
+                <div class="card-body">
+                    <h5 class="card-title">Username</h5>
+                </div>
+                <div class="card-body">
+                    <ul class="list-group list-group-flush">
+                        <button type="button" class="list-group-item list-group-item-action" data-toggle="modal"
+                                data-target="#exampleModalCenter">
+                            Change password
+                        </button>
+                        <button type="button" class="list-group-item list-group-item-action">Dapibus ac facilisis in
+                        </button>
+                        <button type="button" class="list-group-item list-group-item-action">Morbi leo risus</button>
+                        <button type="button" class="list-group-item list-group-item-action">Porta ac consectetur ac
+                        </button>
+                        <button type="button" class="list-group-item list-group-item-action" disabled>Vestibulum at
+                            eros
+                        </button>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- /.row -->
+    <!-- Camera -->
+    <!-- end Camera-->
+</div>
+<!-- /.container -->
+<!-- Footer -->
+<footer class="py-5 bg-dark">
+    <div class="container">
+        <p class="m-0 text-center text-white">Copyright &copy; Your Website 2019</p>
+    </div>
+    <!-- /.container -->
+</footer>
+</body>
+
+</html>
+<!-- new post modal-->
+<div class="modal fade bd-example-modal-lg" id="newPostModal" tabindex="-1" role="dialog"
+     aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">New Post</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <form class="needs-validation" novalidate="">
+                <div class="modal-body">
+                    <div class="input-group mb-3">
+                        <div class="input-group-prepend">
+                            <label class="input-group-text" for="inputGroupSelect01">Event</label>
+                        </div>
+                        <select class="custom-select" id="inputGroupSelect01" required>
+                            <option selected></option>
+                            <option value="1">One</option>
+                            <option value="2">Two</option>
+                            <option value="3">Three</option>
+                        </select>
+                        <div class="invalid-feedback">
+                            Event name is required
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="message-text" class="col-form-label">Content:</label>
+                        <textarea class="form-control" id="message-text" required></textarea>
+                        <div class="invalid-feedback">
+                            Content is required
+                        </div>
+                    </div>
+
+                    <!-- Autocomplete -->
+                    <div class="input-group">
+                        <input class="form-control" id="autocomplete" placeholder="Enter location" type="text" required/>
+                        <div class='input-group-append'>
+                            <button class='btn btn-outline-secondary' type='button'>
+                                <i class='fas fa-location-arrow'></i>
+                            </button>
+                        </div>
+                        <div class="invalid-feedback">
+                            Location is required
+                        </div>
+                    </div>
+                    <!-- Autocomplete -->
+
+                    <hr>
+                    <!-- Camera -->
+                    <div class="row">
+                        <div class="col-md-6">
+                            <video id="v" style="height: 100%; width: 100%"></video>
+                        </div>
+                        <div class="col-md-6">
+                            <canvas id="canvas" style="height: 100%; width: 100%"></canvas>
+                        </div>
+                    </div>
+                    <hr>
+                    <div class="row">
+                        <div class="col-md-5"></div>
+                        <div class="col-md-3">
+                            <button type="button" class="btn btn-danger" id="take">Take Photo</button>
+                        </div>
+                        <div class="col-md-4"></div>
+                    </div>
+                    <!-- end Camera -->
+                    <hr>
+                    <div class="input-group mb-3">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text">Upload</span>
+                        </div>
+                        <div class="custom-file">
+                            <input type="file" class="custom-file-input" id="uploadPic">
+                            <label class="custom-file-label" for="inputGroupFile01">Choose file</label>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="submit" class="btn btn-primary" id="send">Send message</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<!-- New Event Modal-->
+<div class="modal fade bd-example-modal-lg" id="newEventModal" tabindex="-1" role="dialog"
+     aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">New Event</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text" id="basic-addon1">Event</span>
+                    </div>
+                    <input type="text" class="form-control" placeholder="Event name" aria-label="Username"
+                           aria-describedby="basic-addon1">
+                </div>
+                <form>
+                    <div class="form-group">
+                        <label for="message-text" class="col-form-label">Content:</label>
+                        <textarea class="form-control" id="message-text1"></textarea>
+                    </div>
+                    <div class="form-row">
+                        <div class="col-9">
+                            <!-- Autocomplete -->
+                            <div class="input-group">
+                                <input class="form-control" placeholder="Enter location" type="text"/>
+                                <div class='input-group-append'>
+                                    <button class='btn btn-outline-secondary' type='button'>
+                                        <i class='fas fa-location-arrow'></i>
+                                    </button>
+                                </div>
+                            </div>
+                            <!-- Autocomplete -->
+                        </div>
+                        <div class="col-3">
+                            <div class="input-group mb-3">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text" id="basic-addon1"><i class="far fa-calendar-alt"></i></span>
+                                </div>
+                                <input type="text" id="datepicker" class="form-control" placeholder="Date"
+                                       aria-label="Username" aria-describedby="basic-addon1">
+                            </div>
+                        </div>
+
+                    </div>
+                </form>
+
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary">Create</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Change password modal-->
+<div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
+     aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalCenterTitle">Change Password</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="card-body my-login-page">
+                    <form method="POST" class="my-login-validation" novalidate="">
+                        <div class="form-group">
+                            <label for="email">Original Password</label>
+                            <input id="email" type="email" class="form-control" name="email" value="" required
+                                   autofocus>
+                            <div class="invalid-feedback">
+                                Password is invalid
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="password">New Password
+                            </label>
+                            <input id="password" type="password" class="form-control" name="password" required data-eye>
+                            <div class="invalid-feedback">
+                                Password is required
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="password">New Password
+                            </label>
+                            <input id="confirmPassword" type="password" class="form-control" name="password" required
+                                   data-eye>
+                            <div class="invalid-feedback">
+                                Password is required
+                            </div>
+                        </div>
+                        <div class="form-group m-0">
+                            <button type="submit" class="btn btn-primary btn-block">
+                                Save
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/pikaday/pikaday.js"></script>
+<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/pikaday/css/pikaday.css">
+<script>
+    var picker = new Pikaday({
+        field: document.getElementById('datepicker'),
+        format: 'D MMM YYYY',
+        onSelect: function () {
+            console.log(this.getMoment().format('Do MMMM YYYY'));
+        }
+    });
+
+
+    <!-- Camera -->
+    $('#newPostModal').on('shown.bs.modal', function (e) {
+        !(function () {
+            if (navigator.mediaDevices === undefined) {
+                navigator.mediaDevices = {};
+            }
+            if (navigator.mediaDevices.getUserMedia === undefined) {
+                navigator.mediaDevices.getUserMedia = function (constraints) {
+                    // 有getUserMedia
+                    var getUserMedia = navigator.webkitGetUserMedia || navigator.mozGetUserMedia || navigator.msGetUserMedia;
+
+
+                    if (!getUserMedia) {
+                        return Promise.reject(new Error('getUserMedia is not implemented in this browser'));
+                    }
+
+                    // 旧浏览器调用Promise
+                    return new Promise(function (resolve, reject) {
+                        getUserMedia.call(navigator, constraints, resolve, reject);
+                    });
+                }
+            }
+            const constraints = {
+                video: true,
+                audio: false
+            };
+            let videoPlaying = false;
+            let v = document.getElementById('v');
+            let promise = navigator.mediaDevices.getUserMedia(constraints);
+            promise.then(stream => {
+                //  新浏览器srcObject
+                if ("srcObject" in v) {
+                v.srcObject = stream;
+            } else {
+                // 旧版浏览器src
+                v.src = window.URL.createObjectURL(stream);
+            }
+            v.onloadedmetadata = function (e) {
+                v.play();
+                videoPlaying = true;
+            };
+        }).catch(err => {
+                console.error(err.name + ": " + err.message);
+        })
+            document.getElementById('take').addEventListener('click', function () {
+                if (videoPlaying) {
+                    let canvas = document.getElementById('canvas');
+                    canvas.width = v.videoWidth;
+                    canvas.height = v.videoHeight;
+                    canvas.getContext('2d').drawImage(v, 0, 0);
+                    // 获取图片
+                    let data = canvas.toDataURL('image/webp');
+                    // document.getElementById('photo').setAttribute('src', data);
+                }
+            }, false);
+        })();
+    });
+    <!-- end Camera -->
+
+
+    <!-- Google Map -->
+
+    var autocomplete;
+
+    function initAutocomplete() {
+
+        autocomplete = new google.maps.places.Autocomplete(
+            $('#autocomplete').get(0), {types: ['geocode']});
+
+        autocomplete.addListener('place_changed', fillInAddress);
+    }
+
+    var latitude;
+    var longitude;
+
+    function fillInAddress() {
+        // Get the place details from the autocomplete object.
+        var place = autocomplete.getPlace();
+        latitude = place.geometry.location.lat();
+        longitude = place.geometry.location.lng();
+    }
+
+
+    $('#send').click(function (event) {
+        /* Act on the event */
+
+        var placeName = $('#autocomplete').val(); // 地点名
+        console.log(placeName);
+        console.log(latitude);  //纬度
+        console.log(longitude); //经度
+
+        if (latitude == undefined || longitude == undefined) {
+            //处理不输入地址情况
+        }
+    });
+
+    (function() {
+        'use strict';
+        window.addEventListener('load', function() {
+            // Fetch all the forms we want to apply custom Bootstrap validation styles to
+            var forms = document.getElementsByClassName('needs-validation');
+            // Loop over them and prevent submission
+            var validation = Array.prototype.filter.call(forms, function(form) {
+                document.getElementById('send').addEventListener('click', function(event) {
+                    if (form.checkValidity() === false) {
+                        event.preventDefault();
+                        event.stopPropagation();
+                    }
+                    form.classList.add('was-validated');
+                }, false);
+            });
+        }, false);
+    })();
+</script>
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDzvopGR4Y5pFczQMWdHoKcIzywJwr_VYA&libraries=places&callback=initAutocomplete"
+        async defer></script>

@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <title>Blog Home</title>
+    <link rel="manifest" href="/manifest.json">
+    <!-- Bootstrap core -->
+    <link rel="stylesheet" href="/stylesheets/libraries/bootstrap.css">
+    <!-- jQuery -->
+    <script src="/javascripts/libraries/jquery-3.3.1.js"></script>
+    <!-- init indexed db -->
+    <script src="/javascripts/idb.js"></script>
+    <!-- popper -->
+    <script src="/javascripts/libraries/popper.js"></script>
+    <!-- bootstrap.js -->
+    <script src="/javascripts/libraries/bootstrap.js"></script>
+    <!-- font awesome -->
+    <link rel="stylesheet" href="/stylesheets/all.css">
+    <!-- date picker -->
+    <script src="/javascripts/libraries/moment.js"></script>
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.8.0/css/bootstrap-datepicker.min.css"/>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.8.0/js/bootstrap-datepicker.min.js"></script>
+    <link rel="stylesheet" href="/stylesheets/modal.css">
+    <!--<style type="text/css">-->
+        <!--/*body {*/-->
+            <!--/*padding-top: 56px;*/-->
+        <!--/*}*/-->
+        <!--/* for auto complete */-->
+        <!--.pac-container {-->
+            <!--z-index: 1051 !important;-->
+        <!--}-->
+
+        <!--.modal {-->
+            <!--z-index: 20;-->
+        <!--}-->
+
+        <!--.modal-backdrop {-->
+            <!--z-index: 10;-->
+        <!--}-->
+
+    <!--</style>-->
+</head>
+
+<body>
+<div id="offline-div" style="display: none; text-align: center" class="alert alert-warning" role="alert">
+    <h1>YOU ARE OFFLINE</h1>
+</div>
+<!--<div class="jumbotron jumbotron-fluid">-->
+    <!--<div class="container">-->
+        <!--<h1 class="display-4">Events Explorer</h1>-->
+        <!--<p class="lead">To creat or search events and post your comments!</p>-->
+        <!--<p id="numberOfUsers"></p>-->
+    <!--</div>-->
+<!--</div>-->
+
+<nav class="navbar navbar-expand-lg navbar-light bg-light" style="background-color: #e3f2fd;">
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNavDropdown">
+        <ul class="nav justify-content-center nav-tabs" id="nav">
+            <li class="nav-item">
+                <a class="nav-link active" href="#">Home</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/events">Search Events</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/posts">Search Posts</a>
+            </li>
+            <li class="nav-item" id="yourBlogNav">
+
+            </li>
+            <!--<li class="nav-item dropdown">-->
+                <!--<a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">-->
+                    <!--Dropdown link-->
+                <!--</a>-->
+                <!--<div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">-->
+                    <!--<a class="dropdown-item" href="#">Action</a>-->
+                    <!--<a class="dropdown-item" href="#">Another action</a>-->
+                    <!--<a class="dropdown-item" href="#">Something else here</a>-->
+                <!--</div>-->
+            <!--</li>-->
+        </ul>
+    </div>
+    <form class="form-inline">
+        <span id="numberOfUsers"></span>
+        <span>&nbsp;</span>
+        <!--<input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">-->
+        <div id="nav-bar-btn" class="input-group">
+
+        </div>
+        <div id="users-panel" class="input-group">
+
+        </div>
+    </form>
+</nav>
+
+
+<!-- Navigation -->
+<!--<ul class="nav justify-content-center nav-tabs">-->
+    <!--<li class="nav-item">-->
+        <!--<a class="nav-link active" href="#">Home</a>-->
+    <!--</li>-->
+    <!--<li class="nav-item">-->
+        <!--<a class="nav-link" href="/events">Search Events</a>-->
+    <!--</li>-->
+    <!--<li class="nav-item">-->
+        <!--<a class="nav-link" href="/posts">Search Posts</a>-->
+    <!--</li>-->
+    <!--<li id="users-panel" class="nav-item">-->
+    <!--</li>-->
+    <!--<form class="form-inline">-->
+        <!--&lt;!&ndash;<input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">&ndash;&gt;-->
+        <!--<div id="nav-bar-btn" class="input-group">-->
+
+        <!--</div>-->
+        <!---->
+    <!--</form>-->
+<!--</ul>-->
+
+<!-- Page Content -->
+<div class="container">
+    <div class="row" style="margin-top: 2%">
+        <!-- Blog Entries Column -->
+        <div class="col-md-8">
+            <!-- Blog Post -->
+            <div id="blog-post"></div>
+            <!-- Pagination -->
+            <ul class="pagination justify-content-center mb-4">
+                <li class="page-item">
+                    <a class="page-link" href="#">&larr; Older</a>
+                </li>
+                <li class="page-item disabled">
+                    <a class="page-link" href="#">Newer &rarr;</a>
+                </li>
+            </ul>
+        </div>
+        <!-- Sidebar Widgets Column -->
+        <div class="col-md-4">
+            <!-- Categories Widget -->
+            <div class="card my-4">
+                <h5 class="card-header">Heat Event</h5>
+                <div class="card-body" style="text-align: center;">
+                            <!--<ul id="heat-events" class="list-unstyled mb-0">-->
+                            <!--</ul>-->
+                            <table class="table" border="0" cellpadding="0" cellspacing="0">
+                                <tbody id="tbody">
+
+                                </tbody>
+                            </table>
+                </div>
+            </div>
+            <!-- Side Widget -->
+            <div class="card my-4">
+                <h5 class="card-header">Side Widget</h5>
+                <div class="card-body">
+                    Something additional
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- /.row -->
+</div>
+<!-- /.container -->
+<!-- Footer -->
+<footer class="py-5 bg-dark">
+    <div class="container">
+        <p class="m-0 text-center text-white">Event Blog</p>
+    </div>
+    <!-- /.container -->
+</footer>
+
+<!-- new post modal-->
+<div id="new-post-modal">
+</div>
+<!-- New Event Modal-->
+<div id="new-event-modal"></div>
+</body>
+
+<script src="https://cdn.jsdelivr.net/npm/pikaday/pikaday.js"></script>
+<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/pikaday/css/pikaday.css">
+<script src="/javascripts/init_sw.js"></script>
+<script src="/javascripts/query_event.js"></script>
+<script src="/javascripts/query_user.js"></script>
+<script src="/javascripts/nav_bar_btn.js"></script>
+<script src="/javascripts/init_google_autocmp.js"></script>
+<script src="/javascripts/database_indexed.js"></script>
+<script src="/javascripts/query_post.js"></script>
+<script src="/javascripts/query_heat_events.js"></script>
+<script src="/javascripts/new_event.js"></script>
+<script src="/javascripts/new_post.js"></script>
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCSrkK8qj6_ZVsRAbPiqaKsQFib87wjiHk&libraries=places&callback=initAutocomplete"
+        async defer></script>
+<script src="https://cdn.bootcss.com/socket.io/2.2.0/socket.io.js"></script>
+<script>
+
+    var socket = io.connect('https://localhost:3000');
+    socket.emit('login', { username: 'user'+ new Date().getTime()});
+    socket.on('users',function(data){
+        $('#numberOfUsers').text('Online users：'+data.number);
+        console.log('Online users：'+data.number);
+    });
+
+</script>
+</html>

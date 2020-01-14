@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <title>Blog Home</title>
+    <link rel="manifest" href="/manifest.json">
+    <!-- Bootstrap core -->
+    <link rel="stylesheet" href="/stylesheets/libraries/bootstrap.css">
+    <!-- customised style -->
+    <link rel="stylesheet" href="/stylesheets/modal.css">
+    <link rel="stylesheet" href="/stylesheets/navbar.css">
+    <link rel="stylesheet" type="text/css" href="/stylesheets/draftBtn.css">
+    <!-- jQuery -->
+    <script src="/javascripts/libraries/jquery-3.3.1.js"></script>
+    <!-- init indexed db -->
+    <script src="/javascripts/idb.js"></script>
+    <!-- popper -->
+    <script src="/javascripts/libraries/popper.js"></script>
+    <!-- bootstrap.js -->
+    <script src="/javascripts/libraries/bootstrap.js"></script>
+    <!-- font awesome -->
+    <link rel="stylesheet" href="/stylesheets/all.css">
+    <!-- moment -->
+    <script src="/javascripts/libraries/moment.js"></script>
+    <!-- date picker -->
+    <script src="/javascripts/libraries/pikaday.js"></script>
+    <link rel="stylesheet" type="text/css" href="/stylesheets/libraries/pikaday.css">
+</head>
+
+<body>
+<div id="offline-div" style="display: none; text-align: center" class="alert alert-warning" role="alert">
+    <h1>YOU ARE OFFLINE</h1>
+</div>
+<nav class="navbar navbar-expand-sm navbar-light bg-light" style="background-color: #FFFFFF; ">
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown"
+            aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNavDropdown">
+        <ul class="navbar-nav" id="nav">
+            <li class="nav-item">
+                <a class="nav-link active" href="/">Home</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/events">Search Events</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/posts">Search Posts</a>
+            </li>
+            <li class="nav-item" id="myBlog">
+            </li>
+        </ul>
+    </div>
+    <form class="form-inline text-center">
+        <div class="input-group" id="nav-bar-btn">
+        </div>
+    </form>
+</nav>
+
+<!-- Page Content -->
+<div class="container">
+    <div class="row" style="margin-top: 2%">
+        <!-- Blog Entries Column -->
+        <div class="col-sm-8">
+            <div class="jumbotron jumbotron-fluid" style="display: none" id="noDataPanel">
+                <div class="container">
+                    <h1 class="display-4" style="text-align: center">No posts</h1>
+                </div>
+            </div>
+            <!-- Blog Post -->
+            <div id="blog-post"></div>
+
+        </div>
+        <!-- Sidebar Widgets Column -->
+        <div class="col-sm-4 index-event">
+            <!-- Categories Widget -->
+            <div class="card">
+                <h5 class="card-header">Event List</h5>
+                <div class="card-body" style="text-align: center;">
+                    <ul id="heat-events" class="list-unstyled mb-0">
+                    </ul>
+
+                </div>
+            </div>
+            <div id="post_event" style="text-align: center"></div>
+
+        </div>
+
+    </div>
+    <!-- /.row -->
+</div>
+<!-- /.container -->
+<!-- Footer -->
+<footer class="py-5 bg-dark">
+    <div class="container">
+        <p class="m-0 text-center text-white"><span id="numberOfUsers"></span></p>
+    </div>
+    <!-- /.container -->
+</footer>
+
+<!-- new post modal-->
+<div id="new-post-modal">
+</div>
+<!-- New Event Modal-->
+<div id="new-event-modal"></div>
+</body>
+
+<script src="/javascripts/init_sw.js"></script>
+<script src="/javascripts/query_event.js"></script>
+<script src="/javascripts/query_user.js"></script>
+<script src="/javascripts/nav_bar_btn.js"></script>
+<script src="/javascripts/init_google_autocmp.js"></script>
+<script src="/javascripts/database_indexed.js"></script>
+<script src="/javascripts/query_post.js"></script>
+<script src="/javascripts/query_heat_events.js"></script>
+<script src="/javascripts/new_event.js"></script>
+<script src="/javascripts/new_post.js"></script>
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCSrkK8qj6_ZVsRAbPiqaKsQFib87wjiHk&libraries=places&callback=initAutocomplete"
+        async defer></script>
+<script src="https://cdn.bootcss.com/socket.io/2.2.0/socket.io.js"></script>
+<script>
+
+    var socket = io.connect('https://localhost:3000');
+    socket.emit('connected', {username: 'user' + new Date().getTime()});
+    socket.on('users', function (data) {
+        $('#numberOfUsers').text('Visitors：' + data.number);
+        console.log('Visitors：' + data.number);
+    });
+
+</script>
+</html>
